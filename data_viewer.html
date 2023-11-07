@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Viewer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Xử lý sự kiện khi click vào nút
+            $('#loadDataButton').click(function() {
+                // Gọi hàm để tải dữ liệu từ file CSV
+                loadData();
+            });
+
+            // Hàm để tải dữ liệu từ file CSV
+            function loadData() {
+                $.ajax({
+                    url: 'train_data.csv', // Đường dẫn đến file CSV
+                    dataType: 'text',
+                    success: function(data) {
+                        // Xử lý dữ liệu và hiển thị trong khung truy xuất
+                        var lines = data.split('\n');
+                        var table = '<table>';
+                        for (var i = 0; i < lines.length; i++) {
+                            var cells = lines[i].split(',');
+                            table += '<tr>';
+                            for (var j = 0; j < cells.length; j++) {
+                                table += '<td>' + cells[j] + '</td>';
+                            }
+                            table += '</tr>';
+                        }
+                        table += '</table>';
+                        $('#dataViewer').html(table);
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <button id="loadDataButton">Load Data</button>
+    <div id="dataViewer"></div>
+</body>
+</html>
