@@ -7,6 +7,39 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css.css">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+          $(document).ready(function() {
+              // Xử lý sự kiện khi click vào nút
+              $('#loadDataButton').click(function() {
+                  // Gọi hàm để tải dữ liệu từ file CSV
+                  loadData();
+              });
+  
+              // Hàm để tải dữ liệu từ file CSV
+              function loadData() {
+                  $.ajax({
+                      url: 'train_data.csv', // Đường dẫn đến file CSV
+                      dataType: 'text',
+                      success: function(data) {
+                          // Xử lý dữ liệu và hiển thị trong khung truy xuất
+                          var lines = data.split('\n');
+                          var table = '<table>';
+                          for (var i = 0; i < lines.length; i++) {
+                              var cells = lines[i].split(',');
+                              table += '<tr>';
+                              for (var j = 0; j < cells.length; j++) {
+                                  table += '<td>' + cells[j] + '</td>';
+                              }
+                              table += '</tr>';
+                          }
+                          table += '</table>';
+                          $('#dataViewer').html(table);
+                      }
+                  });
+              }
+          });
+      </script>
 </head>
 <body class="w3-content" style="max-width:1300px">
 
@@ -42,39 +75,6 @@
 <div class="w3-row">
   <div class="w3-half w3-light-grey w3-center" style="min-height:800px" id="work">
     <div class="w3-padding-64">
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-          $(document).ready(function() {
-              // Xử lý sự kiện khi click vào nút
-              $('#loadDataButton').click(function() {
-                  // Gọi hàm để tải dữ liệu từ file CSV
-                  loadData();
-              });
-  
-              // Hàm để tải dữ liệu từ file CSV
-              function loadData() {
-                  $.ajax({
-                      url: 'train_data.csv', // Đường dẫn đến file CSV
-                      dataType: 'text',
-                      success: function(data) {
-                          // Xử lý dữ liệu và hiển thị trong khung truy xuất
-                          var lines = data.split('\n');
-                          var table = '<table>';
-                          for (var i = 0; i < lines.length; i++) {
-                              var cells = lines[i].split(',');
-                              table += '<tr>';
-                              for (var j = 0; j < cells.length; j++) {
-                                  table += '<td>' + cells[j] + '</td>';
-                              }
-                              table += '</tr>';
-                          }
-                          table += '</table>';
-                          $('#dataViewer').html(table);
-                      }
-                  });
-              }
-          });
-      </script>
       <h2>Phần chức năng</h2>
       <button class="button-1" role="button" id="loadDataButton">Khách hàng tiềm năng</button>
       <button class="button-1" role="button">Gợi ý</button>
