@@ -7,39 +7,17 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css.css">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-          $(document).ready(function() {
-              // Xử lý sự kiện khi click vào nút
-              $('#loadDataButton').click(function() {
-                  // Gọi hàm để tải dữ liệu từ file CSV
-                  loadData();
-              });
-  
-              // Hàm để tải dữ liệu từ file CSV
-              function loadData() {
-                  $.ajax({
-                      url: 'test_data.csv', // Đường dẫn đến file CSV
-                      dataType: 'text',
-                      success: function(data) {
-                          // Xử lý dữ liệu và hiển thị trong khung truy xuất
-                          var lines = data.split('\n');
-                          var table = '<table>';
-                          for (var i = 0; i < lines.length; i++) {
-                              var cells = lines[i].split(',');
-                              table += '<tr>';
-                              for (var j = 0; j < cells.length; j++) {
-                                  table += '<td>' + cells[j] + '</td>';
-                              }
-                              table += '</tr>';
-                          }
-                          table += '</table>';
-                          $('#dataViewer').html(table);
-                      }
-                  });
-              }
-          });
-      </script>
+  <script src="script.js"></script>
+  <style>
+    #search-input {
+      width: 300px;
+      margin-bottom: 10px;
+    }
+    #search-results {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body class="w3-content" style="max-width:1300px">
 
@@ -81,7 +59,7 @@
       <button class="button-1" role="button">Tin tức</button>
     </div>
     <div class="search-container">
-        <input type="text" name="search" placeholder="Search..." class="search-input">
+        <input type="text" name="search" placeholder="Tìm kiếm game" id="search-input" class="search-input">
         <a href="#" class="search-btn">
                 <i class="fas fa-search"></i>      
         </a>
@@ -90,7 +68,7 @@
   <div class="w3-half w3-indigo w3-container" style="min-height:800px">
     <div class="w3-padding-64 w3-center">
       <h2>Phần đầu ra</h2>
-      <div id="dataViewer"></div>
+      <div id="search-results"></div>
     </div>
   </div>
 </div>
