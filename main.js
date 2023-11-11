@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.getElementById('loadDataButton').addEventListener('click', function () {
-    var csvFilePath = "./test_data.csv";
+    var csvFilePath = "https://github.com/chunguyentest01/test/blob/main/test_data.csv";
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
