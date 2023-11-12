@@ -44,20 +44,22 @@
 <div class="w3-row">
   <div class="w3-half w3-light-grey w3-center" style="min-height:800px" id="work">
     <div class="w3-padding-64">
-      <h2>Phần chức năng</h2>
-      <button class="button-1" role="button" id="loadDataButton">Khách hàng tiềm năng</button>
-      <button class="button-1" role="button">Gợi ý</button>
-      <button class="button-1" role="button">Tin tức</button>
-    </div>
-    <div class="search-box">
-      <button class="btn-search"><i class="fas fa-search"></i></button>
-      <input type="text" class="input-search" placeholder="Tìm kiếm game...">
+      <h2>Phần đầu ra</h2>
+      <form action="" class="search-bar">
+        <input type="search" name="search" pattern=".*\S.*" required>
+        <button class="search-btn" type="submit">
+          <span>Search</span>
+        </button>
+      </form>
     </div>
   </div>
   <div class="w3-half w3-indigo w3-container" style="min-height:800px">
     <div class="w3-padding-64 w3-center">
-      <h2>Phần đầu ra</h2>
-      <canvas id="myChart" width="400" height="200"></canvas>
+
+      <h2>Phần chức năng</h2>
+      <button class="button-1" role="button">Khách hàng tiềm năng</button>
+      <button class="button-1" role="button">Gợi ý</button>
+      <button class="button-1" role="button">Tin tức</button>
     </div>
   </div>
 </div>
@@ -81,7 +83,5 @@
     <p>Giao diện nhóm kham khảo của www.w3schools.com</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="main.js"></script>
 </body>
 </html>
